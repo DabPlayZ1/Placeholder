@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://47pe7sys60j0"]
+[gd_scene format=3 uid="uid://s635ttbsk5i5"]
 
 [ext_resource type="PackedScene" uid="uid://j2ijrf0m6ov2" path="res://character.tscn" id="1_7xr7w"]
 [ext_resource type="PackedScene" uid="uid://cwuy57mgibuga" path="res://palmtree.glb" id="1_k6qg0"]
@@ -99,4 +99,5 @@ mesh = SubResource("BoxMesh_vrowr")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground" unique_id=718940785]
 shape = SubResource("BoxShape3D_k6qg0")
 
+[connection signal="pressed" from="Play" to="Player" method="_on_play_pressed"]
 [connection signal="pressed" from="Play" to="Play" method="_on_pressed"]

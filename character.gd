@@ -27,18 +27,16 @@ func _unhandled_input(event: InputEvent) -> void:
 		
 
 func _physics_process(delta: float) -> void:
-	if can_move:
+	if can_move == true:
 		var directions : Vector2 = Input.get_vector("Left", "Right", "Forward", "Backwards")
 		var movement : Vector3 = Vector3(directions.x, 0, directions.y).normalized()
 		var local_movement : Vector3 = transform.basis * movement
-		velocity.x += local_movement.x * speed * delta
-		velocity.x = clamp(velocity.x, -speed, speed)
-		velocity.z += local_movement.z * speed * delta
 		velocity.z = clamp(velocity.z, -speed, speed)
 		velocity.x = move_toward(velocity.x, local_movement.x*speed, acceleration*delta)
 		velocity.z = move_toward(velocity.z, local_movement.z*speed, acceleration*delta)
 		velocity.y -= gravity * delta
-
+		if Input.is_action_just_pressed("Jump"):
+			velocity.y = jumpheight
 		move_and_slide()
 #extends CharacterBody3D
 #var sensitivity : float = 0.5
