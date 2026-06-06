@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://j2ijrf0m6ov2"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vu45j"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_glpr6"]
+
+[node name="CharacterBody3D" type="CharacterBody3D" unique_id=84449976]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=940596116]
+shape = SubResource("CapsuleShape3D_vu45j")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=627346522]
+mesh = SubResource("CapsuleMesh_glpr6")
+
+[node name="camera" type="Camera3D" parent="." unique_id=1257776516]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6252553, -0.53331035)
