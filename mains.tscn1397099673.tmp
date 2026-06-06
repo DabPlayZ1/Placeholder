@@ -36,14 +36,13 @@ environment = SubResource("Environment_k6qg0")
 [node name="Player" parent="." unique_id=1884823947 instance=ExtResource("1_7xr7w")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.8015351, 2)
 script = ExtResource("2_dpg81")
+captured = null
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1086130387]
 transform = Transform3D(10, 0, 0, 0, 0.1, 0, 0, 0, 10, 0, 0, 0)
 mesh = SubResource("BoxMesh_vrowr")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D" unique_id=1626137514]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D" unique_id=1432281162]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D" unique_id=1432281162]
 shape = SubResource("BoxShape3D_dpg81")
 
 [node name="Welcome" type="Label" parent="." unique_id=1076923893]

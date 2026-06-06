@@ -13,13 +13,13 @@ func _unhandled_input(event: InputEvent) -> void:
 		rotation_degrees.y -= event.relative.x * sensitivity
 		%camera.rotation_degrees.x -= event.relative.y * sensitivity
 		%camera.rotation_degrees.x = clamp(%camera.rotation_degrees.x, -90, 90)
-		if event.is_action_pressed("ui_cancel"):
-			if captured == true:
-				captured = false
-				Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-			else:
-				captured = true
-				Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	if event.is_action_pressed("esc"):
+		if captured == true:
+			captured = false
+			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		else:
+			captured = true
+			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 		
 
 func _physics_process(delta: float) -> void:
@@ -34,7 +34,7 @@ func _physics_process(delta: float) -> void:
 	velocity.z = move_toward(velocity.z, local_movement.z*speed, acceleration*delta)
 	velocity.y -= gravity * delta
 
-
+	move_and_slide()
 #extends CharacterBody3D
 #var sensitivity : float = 0.5
 #@export var captured : bool = true
