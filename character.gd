@@ -5,6 +5,10 @@ var speed : int = 10
 var jumpheight : int = 33
 @export var captured : bool = true
 var sensitivity : float = 0.5
+@export var can_move : bool = false
+
+func _on_play_pressed() -> void:
+	can_move = true
 func _ready() -> void:
 	print("Captured!")
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -23,18 +27,19 @@ func _unhandled_input(event: InputEvent) -> void:
 		
 
 func _physics_process(delta: float) -> void:
-	var directions : Vector2 = Input.get_vector("Left", "Right", "Forward", "Backwards")
-	var movement : Vector3 = Vector3(directions.x, 0, directions.y).normalized()
-	var local_movement : Vector3 = transform.basis * movement
-	velocity.x += local_movement.x * speed * delta
-	velocity.x = clamp(velocity.x, -speed, speed)
-	velocity.z += local_movement.z * speed * delta
-	velocity.z = clamp(velocity.z, -speed, speed)
-	velocity.x = move_toward(velocity.x, local_movement.x*speed, acceleration*delta)
-	velocity.z = move_toward(velocity.z, local_movement.z*speed, acceleration*delta)
-	velocity.y -= gravity * delta
+	if can_move:
+		var directions : Vector2 = Input.get_vector("Left", "Right", "Forward", "Backwards")
+		var movement : Vector3 = Vector3(directions.x, 0, directions.y).normalized()
+		var local_movement : Vector3 = transform.basis * movement
+		velocity.x += local_movement.x * speed * delta
+		velocity.x = clamp(velocity.x, -speed, speed)
+		velocity.z += local_movement.z * speed * delta
+		velocity.z = clamp(velocity.z, -speed, speed)
+		velocity.x = move_toward(velocity.x, local_movement.x*speed, acceleration*delta)
+		velocity.z = move_toward(velocity.z, local_movement.z*speed, acceleration*delta)
+		velocity.y -= gravity * delta
 
-	move_and_slide()
+		move_and_slide()
 #extends CharacterBody3D
 #var sensitivity : float = 0.5
 #@export var captured : bool = true
@@ -88,3 +93,6 @@ func _physics_process(delta: float) -> void:
 	#velocity.x = move_toward(velocity.x, local_movement.x*speed, acceleration*delta)
 	#velocity.z = move_toward(velocity.z, local_movement.z*speed, acceleration*delta)
 	#velocity.y -= gravity * delta
+
+
+	 # Replace with function body.

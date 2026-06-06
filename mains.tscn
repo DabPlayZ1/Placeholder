@@ -77,4 +77,5 @@ grow_vertical = 2
 text = "Play"
 script = ExtResource("2_7xr7w")
 
+[connection signal="pressed" from="Play" to="Player" method="_on_play_pressed"]
 [connection signal="pressed" from="Play" to="Play" method="_on_pressed"]
