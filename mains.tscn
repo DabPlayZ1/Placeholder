@@ -1,12 +1,19 @@
-[gd_scene format=3 uid="uid://s635ttbsk5i5"]
+[gd_scene format=3 uid="uid://47pe7sys60j0"]
 
 [ext_resource type="PackedScene" uid="uid://j2ijrf0m6ov2" path="res://character.tscn" id="1_7xr7w"]
+[ext_resource type="PackedScene" uid="uid://cwuy57mgibuga" path="res://palmtree.glb" id="1_k6qg0"]
 [ext_resource type="Script" uid="uid://dtogkrx1msjug" path="res://gamestart.gd" id="2_7xr7w"]
 [ext_resource type="Script" uid="uid://bsf3rkc3x5ace" path="res://character.gd" id="2_dpg81"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7xr7w"]
-sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
-ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+sky_top_color = Color(0.41801074, 0.60166144, 0.9538794, 1)
+sky_horizon_color = Color(0.61655265, 0.70064694, 0.8737066, 1)
+sky_curve = 0.16076568
+sky_energy_multiplier = 1.1
+ground_bottom_color = Color(0.41960785, 0.6, 0.9529412, 1)
+ground_horizon_color = Color(0.6156863, 0.7019608, 0.8745098, 1)
+ground_curve = 0.16
+ground_energy_multiplier = 1.1
 
 [sub_resource type="Sky" id="Sky_dpg81"]
 sky_material = SubResource("ProceduralSkyMaterial_7xr7w")
@@ -16,13 +23,17 @@ background_mode = 2
 sky = SubResource("Sky_dpg81")
 tonemap_mode = 2
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_k6qg0"]
+height = 10.754364
+radius = 1.0151367
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qdmao"]
-albedo_color = Color(0, 0.33333334, 0, 1)
+albedo_color = Color(0.8273717, 0.6245165, 0.23821166, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_vrowr"]
 material = SubResource("StandardMaterial3D_qdmao")
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_dpg81"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_k6qg0"]
 
 [node name="Node3D" type="Node3D" unique_id=1140575817]
 
@@ -36,15 +47,6 @@ environment = SubResource("Environment_k6qg0")
 [node name="Player" parent="." unique_id=1884823947 instance=ExtResource("1_7xr7w")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.8015351, 2)
 script = ExtResource("2_dpg81")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1086130387]
-transform = Transform3D(10, 0, 0, 0, 0.1, 0, 0, 0, 10, 0, 0, 0)
-mesh = SubResource("BoxMesh_vrowr")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D" unique_id=1626137514]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D" unique_id=1432281162]
-shape = SubResource("BoxShape3D_dpg81")
 
 [node name="Welcome" type="Label" parent="." unique_id=1076923893]
 unique_name_in_owner = true
@@ -77,5 +79,24 @@ grow_vertical = 2
 text = "Play"
 script = ExtResource("2_7xr7w")
 
-[connection signal="pressed" from="Play" to="Player" method="_on_play_pressed"]
+[node name="PalmTree" type="StaticBody3D" parent="." unique_id=341859513]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 9.636001, -0.09716466, -8.8550415)
+metadata/_edit_group_ = true
+
+[node name="palmtree" parent="PalmTree" unique_id=1898941854 instance=ExtResource("1_k6qg0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4648829, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PalmTree" unique_id=635261270]
+transform = Transform3D(0.99999976, 0, 0, 0, 0.99999976, 0, 0, 0, 0.99999976, 0, 5.8054094, 0)
+shape = SubResource("CylinderShape3D_k6qg0")
+
+[node name="Ground" type="StaticBody3D" parent="." unique_id=1970275955]
+transform = Transform3D(30, 0, 0, 0, 0.1, 0, 0, 0, 30, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground" unique_id=1086130387]
+mesh = SubResource("BoxMesh_vrowr")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground" unique_id=718940785]
+shape = SubResource("BoxShape3D_k6qg0")
+
 [connection signal="pressed" from="Play" to="Play" method="_on_pressed"]
