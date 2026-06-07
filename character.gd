@@ -1,7 +1,7 @@
 extends CharacterBody3D
 var acceleration : int  = 67
 var gravity : int = 100
-var speed : int = 10
+var speed : int = 8
 var jumpheight : int = 20
 @export var captured : bool = false
 var sensitivity : float = 0.5
@@ -27,9 +27,14 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _physics_process(delta: float) -> void:
 	if can_move == true:
-		if Input.is_action_just_pressed("Sprint"):
-			speed = speed * sprint_multiplier
-			print(speed)
+		if Input.is_action_pressed("Sprint"):
+			speed = 11
+			acceleration = 60
+			
+		else:
+			speed = 7
+			acceleration = 67
+			
 		var directions : Vector2 = Input.get_vector("Left", "Right", "Forward", "Backwards")
 		var movement : Vector3 = Vector3(directions.x, 0, directions.y).normalized()
 		var local_movement : Vector3 = transform.basis * movement

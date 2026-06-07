@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://dtogkrx1msjug" path="res://gamestart.gd" id="2_7xr7w"]
 [ext_resource type="Script" uid="uid://bsf3rkc3x5ace" path="res://character.gd" id="2_dpg81"]
 [ext_resource type="PackedScene" uid="uid://dh3cnvaogl4h0" path="res://newpalmtree.glb" id="4_k6qg0"]
+[ext_resource type="Texture2D" uid="uid://d20couuenoy8j" path="res://sand.jpg" id="5_aly0r"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7xr7w"]
 sky_top_color = Color(0.41801074, 0.60166144, 0.9538794, 1)
@@ -29,6 +30,12 @@ radius = 1.0576172
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qdmao"]
 albedo_color = Color(0.8273717, 0.6245165, 0.23821166, 1)
+normal_enabled = true
+normal_scale = 0.7
+normal_texture = ExtResource("5_aly0r")
+bent_normal_texture = ExtResource("5_aly0r")
+uv1_scale = Vector3(300, 500, 300)
+uv1_triplanar_sharpness = 0.2
 
 [sub_resource type="BoxMesh" id="BoxMesh_vrowr"]
 material = SubResource("StandardMaterial3D_qdmao")
@@ -38,7 +45,10 @@ material = SubResource("StandardMaterial3D_qdmao")
 [node name="Node3D" type="Node3D" unique_id=1140575817]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1005511613]
-transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 108.42376, -84.73392)
+light_color = Color(0.69773674, 0.52108616, 0.41924122, 1)
+light_energy = 0.7
+light_indirect_energy = 0.5
 shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=725910202]
@@ -91,7 +101,7 @@ shape = SubResource("CylinderShape3D_k6qg0")
 [node name="newpalmtree" parent="PalmTree" unique_id=1546416993 instance=ExtResource("4_k6qg0")]
 
 [node name="Ground" type="StaticBody3D" parent="." unique_id=1970275955]
-transform = Transform3D(30, 0, 0, 0, 0.1, 0, 0, 0, 30, 0, 0, 0)
+transform = Transform3D(1000, 0, 0, 0, 0.1, 0, 0, 0, 1000, 0, 0, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Ground" unique_id=1086130387]
 mesh = SubResource("BoxMesh_vrowr")
