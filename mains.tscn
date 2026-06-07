@@ -1,11 +1,12 @@
 [gd_scene format=3 uid="uid://s635ttbsk5i5"]
 
 [ext_resource type="PackedScene" uid="uid://j2ijrf0m6ov2" path="res://character.tscn" id="1_7xr7w"]
-[ext_resource type="Script" uid="uid://dtogkrx1msjug" path="res://gamestart.gd" id="2_7xr7w"]
 [ext_resource type="Script" uid="uid://bsf3rkc3x5ace" path="res://character.gd" id="2_dpg81"]
 [ext_resource type="PackedScene" uid="uid://dh3cnvaogl4h0" path="res://newpalmtree.glb" id="4_k6qg0"]
 [ext_resource type="Material" uid="uid://es6erm06l0o3" path="res://sandmaterial.tres" id="5_aly0r"]
 [ext_resource type="PackedScene" uid="uid://pu0uqn4c3rwi" path="res://beach.tscn" id="6_ux2uf"]
+[ext_resource type="PackedScene" uid="uid://c51utyqbqkq6k" path="res://rock.glb" id="7_j1baa"]
+[ext_resource type="Texture2D" uid="uid://cviect72a6yhe" path="res://Dialoguebox.png" id="7_sd703"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7xr7w"]
 sky_top_color = Color(0.41801074, 0.60166144, 0.9538794, 1)
@@ -54,37 +55,6 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.8015351, 2)
 script = ExtResource("2_dpg81")
 
-[node name="Welcome" type="Label" parent="." unique_id=1076923893]
-unique_name_in_owner = true
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -99.0
-offset_top = -74.0
-offset_right = 99.0
-offset_bottom = -51.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Welcome to [Placeholder]"
-
-[node name="Play" type="Button" parent="." unique_id=585039857]
-unique_name_in_owner = true
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -59.0
-offset_top = -15.5
-offset_right = 59.0
-offset_bottom = 15.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "Play"
-script = ExtResource("2_7xr7w")
-
 [node name="PalmTree" type="StaticBody3D" parent="." unique_id=341859513]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 9.636001, 0.4788686, -8.8550415)
 metadata/_edit_group_ = true
@@ -109,12 +79,47 @@ shape = SubResource("BoxShape3D_k6qg0")
 [node name="beach" parent="." unique_id=1243782203 instance=ExtResource("6_ux2uf")]
 transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, 98.154, -21.72, 0.077)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=873386495]
+[node name="inviswall" type="StaticBody3D" parent="." unique_id=873386495]
 transform = Transform3D(0.29999995, 0, 0, 0, 0.29999995, 0, 0, 0, 0.29999995, 56.11835, 0.4788686, -8.8550415)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1419242956]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="inviswall" unique_id=1419242956]
 transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, -3.2058105, 31.214622, 0.65109634)
 shape = SubResource("BoxShape3D_ux2uf")
 
-[connection signal="pressed" from="Play" to="Player" method="_on_play_pressed"]
-[connection signal="pressed" from="Play" to="Play" method="_on_pressed"]
+[node name="Control" type="Control" parent="." unique_id=496171127]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 622.0
+offset_top = 519.0
+offset_right = 662.0
+offset_bottom = 559.0
+
+[node name="Dialoguebox" type="Sprite2D" parent="Control" unique_id=598407453]
+scale = Vector2(0.5199988, 0.47999936)
+texture = ExtResource("7_sd703")
+
+[node name="Header" type="RichTextLabel" parent="Control" unique_id=797130685]
+z_index = 1
+layout_mode = 1
+offset_left = -183.0
+offset_top = -108.0
+offset_right = 101.0
+offset_bottom = -62.0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/normal_font_size = 24
+text = "Tutorial"
+
+[node name="Text" type="RichTextLabel" parent="Control" unique_id=1273949033]
+z_index = 1
+layout_mode = 1
+offset_left = -179.0
+offset_top = -62.0
+offset_right = 99.0
+offset_bottom = 40.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 24
+text = "Hey
+"
+
+[node name="rock" parent="." unique_id=35344685 instance=ExtResource("7_j1baa")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 12.072238, 0.412458, -7.4452214)

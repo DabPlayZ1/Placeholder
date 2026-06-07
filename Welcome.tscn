@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://237tetrd0hg0"]
+
+[ext_resource type="Script" uid="uid://dtogkrx1msjug" path="res://gamestart.gd" id="1_iriu7"]
+
+[node name="Node2D" type="Node2D" unique_id=1900986732]
+
+[node name="Welcome" type="Label" parent="." unique_id=137611237]
+unique_name_in_owner = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 435.5
+offset_top = 194.0
+offset_right = 672.0
+offset_bottom = 251.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Welcome to [PLACEHOLDER]"
+
+[node name="Play" type="Button" parent="." unique_id=155052380]
+unique_name_in_owner = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 493.0
+offset_top = 471.0
+offset_right = 611.0
+offset_bottom = 502.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Play"
+script = ExtResource("1_iriu7")
+
+[connection signal="pressed" from="Play" to="Play" method="_on_pressed"]
