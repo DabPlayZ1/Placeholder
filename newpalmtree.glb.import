@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cwuy57mgibuga"
-path="res://.godot/imported/palmtree.glb-a99ec718698e72aba879821e053c6564.scn"
+uid="uid://dh3cnvaogl4h0"
+path="res://.godot/imported/newpalmtree.glb-9a11117de371f00d7a808fc5332799f7.scn"
 
 [deps]
 
-source_file="res://palmtree.glb"
-dest_files=["res://.godot/imported/palmtree.glb-a99ec718698e72aba879821e053c6564.scn"]
+source_file="res://newpalmtree.glb"
+dest_files=["res://.godot/imported/newpalmtree.glb-9a11117de371f00d7a808fc5332799f7.scn"]
 
 [params]
 

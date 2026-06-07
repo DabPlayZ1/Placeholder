@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://s635ttbsk5i5"]
 
 [ext_resource type="PackedScene" uid="uid://j2ijrf0m6ov2" path="res://character.tscn" id="1_7xr7w"]
-[ext_resource type="PackedScene" uid="uid://cwuy57mgibuga" path="res://palmtree.glb" id="1_k6qg0"]
 [ext_resource type="Script" uid="uid://dtogkrx1msjug" path="res://gamestart.gd" id="2_7xr7w"]
 [ext_resource type="Script" uid="uid://bsf3rkc3x5ace" path="res://character.gd" id="2_dpg81"]
+[ext_resource type="PackedScene" uid="uid://dh3cnvaogl4h0" path="res://newpalmtree.glb" id="4_k6qg0"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7xr7w"]
 sky_top_color = Color(0.41801074, 0.60166144, 0.9538794, 1)
@@ -24,8 +24,8 @@ sky = SubResource("Sky_dpg81")
 tonemap_mode = 2
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_k6qg0"]
-height = 10.754364
-radius = 1.0151367
+height = 10.659025
+radius = 1.0576172
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qdmao"]
 albedo_color = Color(0.8273717, 0.6245165, 0.23821166, 1)
@@ -80,15 +80,14 @@ text = "Play"
 script = ExtResource("2_7xr7w")
 
 [node name="PalmTree" type="StaticBody3D" parent="." unique_id=341859513]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 9.636001, -0.09716466, -8.8550415)
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 9.636001, 0.5045931, -8.8550415)
 metadata/_edit_group_ = true
 
-[node name="palmtree" parent="PalmTree" unique_id=1898941854 instance=ExtResource("1_k6qg0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4648829, 0)
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PalmTree" unique_id=635261270]
-transform = Transform3D(0.99999976, 0, 0, 0, 0.99999976, 0, 0, 0, 0.99999976, 0, 5.8054094, 0)
+transform = Transform3D(0.9994642, 0.031722557, -0.008003731, -0.030862834, 0.9953628, 0.09109852, 0.010856499, -0.09080273, 0.995809, 0.38641357, 2.816174, -0.35328674)
 shape = SubResource("CylinderShape3D_k6qg0")
+
+[node name="newpalmtree" parent="PalmTree" unique_id=1546416993 instance=ExtResource("4_k6qg0")]
 
 [node name="Ground" type="StaticBody3D" parent="." unique_id=1970275955]
 transform = Transform3D(30, 0, 0, 0, 0.1, 0, 0, 0, 30, 0, 0, 0)

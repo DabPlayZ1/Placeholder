@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dfkkjg6f51abt"
-path.s3tc="res://.godot/imported/palmtree_colorpallette.png-ba3011c97c6b837345a9d124af767d70.s3tc.ctex"
+uid="uid://dxyrmccecp2m3"
+path.s3tc="res://.godot/imported/newpalmtree_colorpallette.png-8567e7ee2287ec66cb73f4e2aa10ba02.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://palmtree_colorpallette.png"
-dest_files=["res://.godot/imported/palmtree_colorpallette.png-ba3011c97c6b837345a9d124af767d70.s3tc.ctex"]
+source_file="res://newpalmtree_colorpallette.png"
+dest_files=["res://.godot/imported/newpalmtree_colorpallette.png-8567e7ee2287ec66cb73f4e2aa10ba02.s3tc.ctex"]
 
 [params]
 

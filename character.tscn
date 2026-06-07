@@ -18,4 +18,4 @@ mesh = SubResource("CapsuleMesh_glpr6")
 
 [node name="camera" type="Camera3D" parent="MeshInstance3D" unique_id=1257776516]
 unique_name_in_owner = true
-transform = Transform3D(1.4285715, 0, 0, 0, 1.4285715, 0, 0, 0, 1.4285715, 0, 0.42786172, -0.53331035)
+transform = Transform3D(1.4285715, 0, 0, 0, 1.4285715, 0, 0, 0, 1.4285715, 0, 0.42786172, -0.48999387)
