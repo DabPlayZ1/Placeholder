@@ -1,8 +1,8 @@
 extends CharacterBody3D
 var acceleration : int  = 67
-var gravity : int = 100
+var gravity : int = 70
 var speed : int = 8
-var jumpheight : int = 20
+var jumpheight : int = 16
 @export var captured : bool = false
 var sensitivity : float = 0.5
 @export var can_move : bool = false
@@ -41,8 +41,8 @@ func _physics_process(delta: float) -> void:
 		velocity.z = clamp(velocity.z, -speed, speed)
 		velocity.x = move_toward(velocity.x, local_movement.x*speed, acceleration*delta)
 		velocity.z = move_toward(velocity.z, local_movement.z*speed, acceleration*delta)
-		velocity.y -= gravity * delta
-		if Input.is_action_just_pressed("Jump"):
+		velocity.y -= gravity * delta	
+		if Input.is_action_pressed("Jump") and is_on_floor():
 			velocity.y = jumpheight
 		move_and_slide()
 #extends CharacterBody3D

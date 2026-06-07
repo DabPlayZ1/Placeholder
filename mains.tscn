@@ -4,7 +4,8 @@
 [ext_resource type="Script" uid="uid://dtogkrx1msjug" path="res://gamestart.gd" id="2_7xr7w"]
 [ext_resource type="Script" uid="uid://bsf3rkc3x5ace" path="res://character.gd" id="2_dpg81"]
 [ext_resource type="PackedScene" uid="uid://dh3cnvaogl4h0" path="res://newpalmtree.glb" id="4_k6qg0"]
-[ext_resource type="Texture2D" uid="uid://d20couuenoy8j" path="res://sand.jpg" id="5_aly0r"]
+[ext_resource type="Material" uid="uid://es6erm06l0o3" path="res://sandmaterial.tres" id="5_aly0r"]
+[ext_resource type="PackedScene" uid="uid://pu0uqn4c3rwi" path="res://beach.tscn" id="6_ux2uf"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7xr7w"]
 sky_top_color = Color(0.41801074, 0.60166144, 0.9538794, 1)
@@ -25,22 +26,16 @@ sky = SubResource("Sky_dpg81")
 tonemap_mode = 2
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_k6qg0"]
-height = 10.659025
+height = 9.775802
 radius = 1.0576172
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qdmao"]
-albedo_color = Color(0.8273717, 0.6245165, 0.23821166, 1)
-normal_enabled = true
-normal_scale = 0.7
-normal_texture = ExtResource("5_aly0r")
-bent_normal_texture = ExtResource("5_aly0r")
-uv1_scale = Vector3(300, 500, 300)
-uv1_triplanar_sharpness = 0.2
-
 [sub_resource type="BoxMesh" id="BoxMesh_vrowr"]
-material = SubResource("StandardMaterial3D_qdmao")
+material = ExtResource("5_aly0r")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_k6qg0"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ux2uf"]
+size = Vector3(1, 66.200226, 333.23334)
 
 [node name="Node3D" type="Node3D" unique_id=1140575817]
 
@@ -91,23 +86,35 @@ text = "Play"
 script = ExtResource("2_7xr7w")
 
 [node name="PalmTree" type="StaticBody3D" parent="." unique_id=341859513]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 9.636001, 0.5045931, -8.8550415)
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 9.636001, 0.4788686, -8.8550415)
 metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PalmTree" unique_id=635261270]
-transform = Transform3D(0.9994642, 0.031722557, -0.008003731, -0.030862834, 0.9953628, 0.09109852, 0.010856499, -0.09080273, 0.995809, 0.38641357, 2.816174, -0.35328674)
+transform = Transform3D(0.9994642, 0.031722553, -0.008003731, -0.030862832, 0.9953628, 0.09109852, 0.010856498, -0.09080273, 0.99580896, 0.40042114, 3.2557373, -0.39338493)
 shape = SubResource("CylinderShape3D_k6qg0")
 
 [node name="newpalmtree" parent="PalmTree" unique_id=1546416993 instance=ExtResource("4_k6qg0")]
 
 [node name="Ground" type="StaticBody3D" parent="." unique_id=1970275955]
 transform = Transform3D(1000, 0, 0, 0, 0.1, 0, 0, 0, 1000, 0, 0, 0)
+visible = false
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Ground" unique_id=1086130387]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, 0)
 mesh = SubResource("BoxMesh_vrowr")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground" unique_id=718940785]
 shape = SubResource("BoxShape3D_k6qg0")
+
+[node name="beach" parent="." unique_id=1243782203 instance=ExtResource("6_ux2uf")]
+transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, 98.154, -21.72, 0.077)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=873386495]
+transform = Transform3D(0.29999995, 0, 0, 0, 0.29999995, 0, 0, 0, 0.29999995, 56.11835, 0.4788686, -8.8550415)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1419242956]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, -3.2058105, 31.214622, 0.65109634)
+shape = SubResource("BoxShape3D_ux2uf")
 
 [connection signal="pressed" from="Play" to="Player" method="_on_play_pressed"]
 [connection signal="pressed" from="Play" to="Play" method="_on_pressed"]
