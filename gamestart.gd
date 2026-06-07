@@ -12,5 +12,9 @@ func _process(delta: float) -> void:
 
 
 func _on_pressed() -> void:
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	%Player.captured = true
+	print("Captured")
 	%Welcome.visible = false
 	%Play.visible = false
+	

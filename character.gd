@@ -3,15 +3,14 @@ var acceleration : int  = 67
 var gravity : int = 100
 var speed : int = 10
 var jumpheight : int = 20
-@export var captured : bool = true
+@export var captured : bool = false
 var sensitivity : float = 0.5
 @export var can_move : bool = false
 var sprint_multiplier : float  = 1.5
 func _on_play_pressed() -> void:
 	can_move = true
 func _ready() -> void:
-	print("Captured!")
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	print("Start")
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion and captured == true:
 		rotation_degrees.y -= event.relative.x * sensitivity
