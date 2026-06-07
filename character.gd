@@ -3,7 +3,7 @@ var acceleration : int  = 67
 var gravity : int = 70
 var speed : int = 8
 var jumpheight : int = 16
-@export var captured : bool = false
+@export var captured : bool = true
 var sensitivity : float = 0.5
 @export var can_move : bool = false
 var sprint_multiplier : float  = 1.5
@@ -11,6 +11,7 @@ func _on_play_pressed() -> void:
 	can_move = true
 func _ready() -> void:
 	print("Start")
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion and captured == true:
 		rotation_degrees.y -= event.relative.x * sensitivity
@@ -30,11 +31,9 @@ func _physics_process(delta: float) -> void:
 		if Input.is_action_pressed("Sprint"):
 			speed = 11
 			acceleration = 60
-			
 		else:
 			speed = 7
 			acceleration = 67
-			
 		var directions : Vector2 = Input.get_vector("Left", "Right", "Forward", "Backwards")
 		var movement : Vector3 = Vector3(directions.x, 0, directions.y).normalized()
 		var local_movement : Vector3 = transform.basis * movement

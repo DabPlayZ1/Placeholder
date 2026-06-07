@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://pu0uqn4c3rwi" path="res://beach.tscn" id="6_ux2uf"]
 [ext_resource type="PackedScene" uid="uid://c51utyqbqkq6k" path="res://rock.glb" id="7_j1baa"]
 [ext_resource type="Texture2D" uid="uid://cviect72a6yhe" path="res://Dialoguebox.png" id="7_sd703"]
+[ext_resource type="Texture2D" uid="uid://b4drysii0dxgp" path="res://interact.png" id="7_ti338"]
 [ext_resource type="PackedScene" uid="uid://b78j5kto53rw4" path="res://dock.glb" id="8_j1baa"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7xr7w"]
@@ -121,6 +122,11 @@ theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 24
 text = "Hey
 "
+
+[node name="Interact" type="Sprite2D" parent="Control" unique_id=2131809004]
+position = Vector2(96, 38)
+scale = Vector2(0.20277777, 0.20277777)
+texture = ExtResource("7_ti338")
 
 [node name="rock" parent="." unique_id=35344685 instance=ExtResource("7_j1baa")]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 12.072238, 0.412458, -7.4452214)
