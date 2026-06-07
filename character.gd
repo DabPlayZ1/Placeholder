@@ -2,7 +2,7 @@ extends CharacterBody3D
 var acceleration : int  = 67
 var gravity : int = 100
 var speed : int = 10
-var jumpheight : int = 33
+var jumpheight : int = 20
 @export var captured : bool = true
 var sensitivity : float = 0.5
 @export var can_move : bool = false
