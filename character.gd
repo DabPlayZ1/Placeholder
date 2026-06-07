@@ -6,7 +6,7 @@ var jumpheight : int = 20
 @export var captured : bool = true
 var sensitivity : float = 0.5
 @export var can_move : bool = false
-
+var sprint_multiplier : float  = 1.5
 func _on_play_pressed() -> void:
 	can_move = true
 func _ready() -> void:
@@ -28,6 +28,9 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _physics_process(delta: float) -> void:
 	if can_move == true:
+		if Input.is_action_just_pressed("Sprint"):
+			speed = speed * sprint_multiplier
+			print(speed)
 		var directions : Vector2 = Input.get_vector("Left", "Right", "Forward", "Backwards")
 		var movement : Vector3 = Vector3(directions.x, 0, directions.y).normalized()
 		var local_movement : Vector3 = transform.basis * movement
