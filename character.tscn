@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://j2ijrf0m6ov2"]
 
 [ext_resource type="Texture2D" uid="uid://cviect72a6yhe" path="res://Dialoguebox.png" id="1_glpr6"]
+[ext_resource type="Texture2D" uid="uid://b4drysii0dxgp" path="res://interact.png" id="2_pjt0s"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vu45j"]
 radius = 0.34521484
@@ -9,7 +10,17 @@ height = 1.3907166
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_glpr6"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_glpr6"]
+line_spacing = 0.0
+font_size = 20
 font_color = Color(0, 0, 0, 1)
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_wa5vi"]
+line_spacing = 0.0
+font_size = 20
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 0
 
 [node name="CharacterBody3D" type="CharacterBody3D" unique_id=84449976]
 
@@ -27,24 +38,46 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2995032, -0.3429957)
 
 [node name="SeeCast" type="RayCast3D" parent="camera" unique_id=1849869206]
 unique_name_in_owner = true
-transform = Transform3D(0.969, 0, 0, 0, -8.742278e-08, -0.969, 0, 2, -4.2356334e-08, 0, 0, 0.343)
+transform = Transform3D(5, 0, 0, 0, -2.1855695e-07, -5, 0, 5, -2.1855695e-07, 0, 0, 0.343)
+debug_shape_thickness = 5
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=161352918]
-
-[node name="LabelCont" type="Sprite2D" parent="CanvasLayer" unique_id=699166135]
+[node name="Interaction" type="CanvasLayer" parent="." unique_id=161352918]
 unique_name_in_owner = true
-position = Vector2(592, 494.00003)
-scale = Vector2(0.3694445, 0.19999999)
+offset = Vector2(75, -25)
+transform = Transform2D(1, 0, 0, 1, 75, -25)
+
+[node name="LabelCont" type="Sprite2D" parent="Interaction" unique_id=699166135]
+unique_name_in_owner = true
+position = Vector2(544, 518)
+scale = Vector2(0.41519102, 0.35694444)
 texture = ExtResource("1_glpr6")
 
-[node name="InteractLabel" type="Label" parent="CanvasLayer" unique_id=251943698]
+[node name="InteractLabel" type="Label" parent="Interaction" unique_id=251943698]
 unique_name_in_owner = true
-offset_left = 529.0
-offset_top = 476.0
-offset_right = 591.0
-offset_bottom = 499.0
+offset_left = 457.0
+offset_top = 485.0
+offset_right = 563.0
+offset_bottom = 524.0
 size_flags_horizontal = 0
 text = "Interact"
 label_settings = SubResource("LabelSettings_glpr6")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Name" type="Label" parent="Interaction" unique_id=199494803]
+unique_name_in_owner = true
+offset_left = 400.0
+offset_top = 438.0
+offset_right = 515.0
+offset_bottom = 466.0
+size_flags_horizontal = 0
+text = "Palm tree"
+label_settings = SubResource("LabelSettings_wa5vi")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Interact" type="Sprite2D" parent="Interaction" unique_id=26306080]
+z_index = 1
+position = Vector2(608, 533.99994)
+scale = Vector2(0.22291675, 0.22291677)
+texture = ExtResource("2_pjt0s")

@@ -7,6 +7,7 @@ var jumpheight : int = 16
 @export var captured : bool = true
 var sensitivity : float = 0.5
 @export var can_move : bool = true
+@export var coconuts : int = 0
 var sprint_multiplier : float  = 1.5
 
 func _ready() -> void:
@@ -29,16 +30,15 @@ func _unhandled_input(event: InputEvent) -> void:
 		
 
 func _physics_process(delta: float) -> void:
-	%LabelCont.hide()
-	%InteractLabel.hide()
+	%Interaction.hide()
 	if %SeeCast.is_colliding():
 		var target = %SeeCast.get_collider()
-		if target != null and target.has_method("interact"):
-			%InteractLabel.show()
-			%LabelCont.show()
+		if target != null and target.has_method("interact") and %Dialogue.dialogueon == false:
+			%Interaction.show()
+			%Name.text = target.name
 			if Input.is_action_just_pressed("Interact"):
 				target.interact()
-
+				
 	if can_move == true:
 		if Input.is_action_pressed("Sprint"):
 			speed = 11

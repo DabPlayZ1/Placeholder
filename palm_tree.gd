@@ -1,19 +1,22 @@
 extends StaticBody3D
 
-@export var quest_name : String = "Quest: Find 7 Coconuts"
-@export var reward : String = "Reward: Nothing Yet"
+@export var quest_name : String = "\nFind 7 Coconuts"
+@export var questtext = ["YO BRO WASSUP.", "I DUN DID AND LOS MY NUTS.", "GO GET EM FOR ME, THX"]
+@export var rewardtext = ["Are you an idiot?", "I said I lost my nuts, not coconuts.", "Get out of my sight."]
 
-func _ready():
-	%QuestName.hide()
-	%Reward.hide()
-	%QuestGiverBox.hide()
-	%Quest_Heading.hide()
-	
-	%Reward.text = reward
-	%QuestName.text = quest_name
+var quested = false
 func interact():
-	print("Can Interact")
-	%QuestName.show()
-	%QuestGiverBox.show()
-	%Reward.show()
-	%Quest_Heading.show()
+	if quested == false:
+		print("Can Interact")
+		%Player.can_move = false
+		%Dialogue.diagtext = questtext
+		%Dialogue.dialogueon = true
+		%Objectives.text += quest_name
+		quested = true
+		await get_tree().create_timer(10).timeout
+		%Player.coconuts = 7
+	elif %Player.coconuts == 7 and quested == true:
+		%Player.can_move = false
+		%Dialogue.diagtext = rewardtext
+		%Dialogue.dialogueon = true
+		%Objectives.text = %Objectives.text.replace("\nFind 7 Coconuts", "")

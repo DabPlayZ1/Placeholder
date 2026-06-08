@@ -1,5 +1,5 @@
 extends Control
-var text = [
+@export var diagtext = [
 "Hey", 
 "I'm gonna teach you about the game.", 
 "All the objects in this world are filled with life.",
@@ -23,9 +23,10 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	cooldown += delta
 	if Input.is_action_just_pressed("Interact") and dialogueon == true and cooldown > 0.5:
-		if not text.size() == dialoguenumber+1:
+		if not diagtext.size() == dialoguenumber+1:
+			modulate = Color(1,1,1,1)
 			dialoguenumber += 1
-			changetext(text[dialoguenumber])
+			changetext(diagtext[dialoguenumber])
 			cooldown = 0
 		else:
 			dialogueon = false
