@@ -29,9 +29,11 @@ func _physics_process(delta: float) -> void:
 		if Input.is_action_pressed("Sprint"):
 			speed = 11
 			acceleration = 60
+			%Sprinting.visible = true
 		else:
 			speed = 7
 			acceleration = 67
+			%Sprinting.visible = false
 		var directions : Vector2 = Input.get_vector("Left", "Right", "Forward", "Backwards")
 		var movement : Vector3 = Vector3(directions.x, 0, directions.y).normalized()
 		var local_movement : Vector3 = transform.basis * movement

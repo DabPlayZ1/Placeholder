@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://b78j5kto53rw4" path="res://dock.glb" id="8_j1baa"]
 [ext_resource type="PackedScene" uid="uid://2apfcrdvcwpt" path="res://rock.tscn" id="9_ti338"]
 [ext_resource type="PackedScene" uid="uid://cjxpjnkbvrv6n" path="res://palm_tree.tscn" id="10_haupa"]
+[ext_resource type="Texture2D" uid="uid://beh64vhwxdapa" path="res://sprinting.png" id="11_cfh6e"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7xr7w"]
 sky_top_color = Color(0.41801074, 0.60166144, 0.9538794, 1)
@@ -34,8 +35,14 @@ material = ExtResource("5_aly0r")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_k6qg0"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_cfh6e"]
+size = Vector3(263.9007, 66.200226, 183.85886)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wtmx0"]
+size = Vector3(299.1897, 66.200226, 183.85886)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_ux2uf"]
-size = Vector3(1, 66.200226, 333.23334)
+size = Vector3(299.1897, 66.200226, 183.85886)
 
 [node name="Node3D" type="Node3D" unique_id=1140575817]
 
@@ -72,7 +79,15 @@ transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, 98.154, -21.72, 0.077)
 transform = Transform3D(0.29999995, 0, 0, 0, 0.29999995, 0, 0, 0, 0.29999995, 56.11835, 0.4788686, -8.8550415)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="inviswall" unique_id=1419242956]
-transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, -3.2058105, 31.214622, 0.65109634)
+transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, 163.53348, 31.214622, 24.381222)
+shape = SubResource("BoxShape3D_cfh6e")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="inviswall" unique_id=1587960942]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, 145.88904, 31.214622, -72.63481)
+shape = SubResource("BoxShape3D_wtmx0")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="inviswall" unique_id=55088863]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, 145.88904, 31.214622, 127.94311)
 shape = SubResource("BoxShape3D_ux2uf")
 
 [node name="Dialogue" type="Control" parent="." unique_id=496171127]
@@ -122,9 +137,15 @@ scale = Vector2(0.20277777, 0.20277777)
 texture = ExtResource("7_ti338")
 
 [node name="dock" parent="." unique_id=512037529 instance=ExtResource("8_j1baa")]
-transform = Transform3D(-2.1855694e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.1855694e-08, 64.785904, -2.5173504, 12.613508)
+transform = Transform3D(-2.1855694e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.1855694e-08, 64.785904, -2.5173504, 1.8381567)
 
 [node name="rock" parent="." unique_id=1695545979 instance=ExtResource("9_ti338")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 11.116823, 0.5142275, -6.4222283)
 
 [node name="PalmTree" parent="." unique_id=97979337 instance=ExtResource("10_haupa")]
+
+[node name="Sprinting" type="Sprite2D" parent="." unique_id=1096736627]
+unique_name_in_owner = true
+visible = false
+position = Vector2(1098, 592)
+texture = ExtResource("11_cfh6e")
