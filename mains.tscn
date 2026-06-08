@@ -2,13 +2,14 @@
 
 [ext_resource type="PackedScene" uid="uid://j2ijrf0m6ov2" path="res://character.tscn" id="1_7xr7w"]
 [ext_resource type="Script" uid="uid://bsf3rkc3x5ace" path="res://character.gd" id="2_dpg81"]
-[ext_resource type="PackedScene" uid="uid://dh3cnvaogl4h0" path="res://newpalmtree.glb" id="4_k6qg0"]
 [ext_resource type="Material" uid="uid://es6erm06l0o3" path="res://sandmaterial.tres" id="5_aly0r"]
+[ext_resource type="Script" uid="uid://catmmix2x5p4" path="res://dialogue.gd" id="5_haupa"]
 [ext_resource type="PackedScene" uid="uid://pu0uqn4c3rwi" path="res://beach.tscn" id="6_ux2uf"]
-[ext_resource type="PackedScene" uid="uid://c51utyqbqkq6k" path="res://rock.glb" id="7_j1baa"]
 [ext_resource type="Texture2D" uid="uid://cviect72a6yhe" path="res://Dialoguebox.png" id="7_sd703"]
 [ext_resource type="Texture2D" uid="uid://b4drysii0dxgp" path="res://interact.png" id="7_ti338"]
 [ext_resource type="PackedScene" uid="uid://b78j5kto53rw4" path="res://dock.glb" id="8_j1baa"]
+[ext_resource type="PackedScene" uid="uid://2apfcrdvcwpt" path="res://rock.tscn" id="9_ti338"]
+[ext_resource type="PackedScene" uid="uid://cjxpjnkbvrv6n" path="res://palm_tree.tscn" id="10_haupa"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7xr7w"]
 sky_top_color = Color(0.41801074, 0.60166144, 0.9538794, 1)
@@ -27,10 +28,6 @@ sky_material = SubResource("ProceduralSkyMaterial_7xr7w")
 background_mode = 2
 sky = SubResource("Sky_dpg81")
 tonemap_mode = 2
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_k6qg0"]
-height = 9.775802
-radius = 1.0576172
 
 [sub_resource type="BoxMesh" id="BoxMesh_vrowr"]
 material = ExtResource("5_aly0r")
@@ -57,16 +54,6 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.8015351, 2)
 script = ExtResource("2_dpg81")
 
-[node name="PalmTree" type="StaticBody3D" parent="." unique_id=341859513]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 9.636001, 0.4788686, -8.8550415)
-metadata/_edit_group_ = true
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="PalmTree" unique_id=635261270]
-transform = Transform3D(0.9994642, 0.031722553, -0.008003731, -0.030862832, 0.9953628, 0.09109852, 0.010856498, -0.09080273, 0.99580896, 0.40042114, 3.2557373, -0.39338493)
-shape = SubResource("CylinderShape3D_k6qg0")
-
-[node name="newpalmtree" parent="PalmTree" unique_id=1546416993 instance=ExtResource("4_k6qg0")]
-
 [node name="Ground" type="StaticBody3D" parent="." unique_id=1970275955]
 transform = Transform3D(1000, 0, 0, 0, 0.1, 0, 0, 0, 1000, 0, 0, 0)
 visible = false
@@ -88,19 +75,23 @@ transform = Transform3D(0.29999995, 0, 0, 0, 0.29999995, 0, 0, 0, 0.29999995, 56
 transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, -3.2058105, 31.214622, 0.65109634)
 shape = SubResource("BoxShape3D_ux2uf")
 
-[node name="Control" type="Control" parent="." unique_id=496171127]
+[node name="Dialogue" type="Control" parent="." unique_id=496171127]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 3
 anchors_preset = 0
 offset_left = 622.0
 offset_top = 519.0
 offset_right = 662.0
 offset_bottom = 559.0
+script = ExtResource("5_haupa")
 
-[node name="Dialoguebox" type="Sprite2D" parent="Control" unique_id=598407453]
+[node name="Dialoguebox" type="Sprite2D" parent="Dialogue" unique_id=598407453]
+unique_name_in_owner = true
 scale = Vector2(0.5199988, 0.47999936)
 texture = ExtResource("7_sd703")
 
-[node name="Header" type="RichTextLabel" parent="Control" unique_id=797130685]
+[node name="Header" type="RichTextLabel" parent="Dialogue" unique_id=797130685]
+unique_name_in_owner = true
 z_index = 1
 layout_mode = 1
 offset_left = -183.0
@@ -111,7 +102,8 @@ theme_override_colors/default_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/normal_font_size = 24
 text = "Tutorial"
 
-[node name="Text" type="RichTextLabel" parent="Control" unique_id=1273949033]
+[node name="Text" type="RichTextLabel" parent="Dialogue" unique_id=1273949033]
+unique_name_in_owner = true
 z_index = 1
 layout_mode = 1
 offset_left = -179.0
@@ -120,16 +112,19 @@ offset_right = 99.0
 offset_bottom = 40.0
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 24
-text = "Hey
-"
+scroll_active = false
+scroll_following_visible_characters = true
 
-[node name="Interact" type="Sprite2D" parent="Control" unique_id=2131809004]
+[node name="Interact" type="Sprite2D" parent="Dialogue" unique_id=2131809004]
+unique_name_in_owner = true
 position = Vector2(96, 38)
 scale = Vector2(0.20277777, 0.20277777)
 texture = ExtResource("7_ti338")
 
-[node name="rock" parent="." unique_id=35344685 instance=ExtResource("7_j1baa")]
-transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 12.072238, 0.412458, -7.4452214)
-
 [node name="dock" parent="." unique_id=512037529 instance=ExtResource("8_j1baa")]
 transform = Transform3D(-2.1855694e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.1855694e-08, 64.785904, -2.5173504, 12.613508)
+
+[node name="rock" parent="." unique_id=1695545979 instance=ExtResource("9_ti338")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 11.116823, 0.5142275, -6.4222283)
+
+[node name="PalmTree" parent="." unique_id=97979337 instance=ExtResource("10_haupa")]

@@ -5,10 +5,8 @@ var speed : int = 8
 var jumpheight : int = 16
 @export var captured : bool = true
 var sensitivity : float = 0.5
-@export var can_move : bool = false
+@export var can_move : bool = true
 var sprint_multiplier : float  = 1.5
-func _on_play_pressed() -> void:
-	can_move = true
 func _ready() -> void:
 	print("Start")
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
