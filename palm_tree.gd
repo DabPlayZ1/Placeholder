@@ -8,6 +8,7 @@ var quested = false
 func interact():
 	if quested == false:
 		print("Can Interact")
+		%Header.text = "Palm Tree"
 		%Player.can_move = false
 		%Dialogue.diagtext = questtext
 		%Dialogue.dialogueon = true
@@ -16,6 +17,7 @@ func interact():
 		await get_tree().create_timer(10).timeout
 		%Player.coconuts = 7
 	elif %Player.coconuts == 7 and quested == true:
+		%Header.text = "Palm Tree"
 		%Player.can_move = false
 		%Dialogue.diagtext = rewardtext
 		%Dialogue.dialogueon = true
