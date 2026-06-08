@@ -1,4 +1,5 @@
 extends CharacterBody3D
+
 var acceleration : int  = 67
 var gravity : int = 70
 var speed : int = 8
@@ -7,14 +8,17 @@ var jumpheight : int = 16
 var sensitivity : float = 0.5
 @export var can_move : bool = true
 var sprint_multiplier : float  = 1.5
+
 func _ready() -> void:
 	print("Start")
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion and captured == true:
 		rotation_degrees.y -= event.relative.x * sensitivity
 		%camera.rotation_degrees.x -= event.relative.y * sensitivity
 		%camera.rotation_degrees.x = clamp(%camera.rotation_degrees.x, -90, 90)
+		
 	if event.is_action_pressed("esc"):
 		if captured == true:
 			captured = false
@@ -25,6 +29,16 @@ func _unhandled_input(event: InputEvent) -> void:
 		
 
 func _physics_process(delta: float) -> void:
+	%LabelCont.hide()
+	%InteractLabel.hide()
+	if %SeeCast.is_colliding():
+		var target = %SeeCast.get_collider()
+		if target != null and target.has_method("interact"):
+			%InteractLabel.show()
+			%LabelCont.show()
+			if Input.is_action_just_pressed("Interact"):
+				target.interact()
+
 	if can_move == true:
 		if Input.is_action_pressed("Sprint"):
 			speed = 11
@@ -34,16 +48,27 @@ func _physics_process(delta: float) -> void:
 			speed = 7
 			acceleration = 67
 			%Sprinting.visible = false
+			
 		var directions : Vector2 = Input.get_vector("Left", "Right", "Forward", "Backwards")
 		var movement : Vector3 = Vector3(directions.x, 0, directions.y).normalized()
 		var local_movement : Vector3 = transform.basis * movement
+		
 		velocity.z = clamp(velocity.z, -speed, speed)
 		velocity.x = move_toward(velocity.x, local_movement.x*speed, acceleration*delta)
 		velocity.z = move_toward(velocity.z, local_movement.z*speed, acceleration*delta)
-		velocity.y -= gravity * delta	
+		velocity.y -= gravity * delta
+		
 		if Input.is_action_pressed("Jump") and is_on_floor():
 			velocity.y = jumpheight
 		move_and_slide()
+
+
+
+
+
+
+
+
 #extends CharacterBody3D
 #var sensitivity : float = 0.5
 #@export var captured : bool = true

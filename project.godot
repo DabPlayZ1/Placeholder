@@ -63,6 +63,10 @@ Interact={
 ]
 }
 
+[layer_names]
+
+3d_physics/layer_1="Interactions"
+
 [physics]
 
 3d/physics_engine="Jolt Physics"

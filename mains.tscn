@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://2apfcrdvcwpt" path="res://rock.tscn" id="9_ti338"]
 [ext_resource type="PackedScene" uid="uid://cjxpjnkbvrv6n" path="res://palm_tree.tscn" id="10_haupa"]
 [ext_resource type="Texture2D" uid="uid://beh64vhwxdapa" path="res://sprinting.png" id="11_cfh6e"]
+[ext_resource type="Script" uid="uid://c2gv6f6ajhxc7" path="res://palm_tree.gd" id="11_wtmx0"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7xr7w"]
 sky_top_color = Color(0.41801074, 0.60166144, 0.9538794, 1)
@@ -43,6 +44,15 @@ size = Vector3(299.1897, 66.200226, 183.85886)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ux2uf"]
 size = Vector3(299.1897, 66.200226, 183.85886)
+
+[sub_resource type="LabelSettings" id="LabelSettings_2ofmp"]
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_wtmx0"]
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_vcjbc"]
+font_color = Color(0, 0, 0, 1)
 
 [node name="Node3D" type="Node3D" unique_id=1140575817]
 
@@ -143,6 +153,67 @@ transform = Transform3D(-2.1855694e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.1855694e-
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 11.116823, 0.5142275, -6.4222283)
 
 [node name="PalmTree" parent="." unique_id=97979337 instance=ExtResource("10_haupa")]
+script = ExtResource("11_wtmx0")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="PalmTree" unique_id=1789760923]
+
+[node name="QuestGiverBox" type="Sprite2D" parent="PalmTree/CanvasLayer" unique_id=919288624]
+unique_name_in_owner = true
+position = Vector2(619, 501)
+scale = Vector2(0.5082031, 0.31944442)
+texture = ExtResource("7_sd703")
+
+[node name="QuestName" type="Label" parent="PalmTree/CanvasLayer" unique_id=770149503]
+unique_name_in_owner = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -132.0
+offset_top = 139.0
+offset_right = 133.0
+offset_bottom = 162.0
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_2ofmp")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Reward" type="Label" parent="PalmTree/CanvasLayer" unique_id=961287040]
+unique_name_in_owner = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -132.0
+offset_top = 171.0
+offset_right = 133.0
+offset_bottom = 194.0
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_wtmx0")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Quest_Heading" type="Label" parent="PalmTree/CanvasLayer" unique_id=1359384442]
+unique_name_in_owner = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -124.0
+offset_top = 106.0
+offset_right = 126.0
+offset_bottom = 135.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Quest"
+label_settings = SubResource("LabelSettings_vcjbc")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Sprinting" type="Sprite2D" parent="." unique_id=1096736627]
 unique_name_in_owner = true
