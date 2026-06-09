@@ -39,7 +39,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2995032, -0.3429957)
 
 [node name="SeeCast" type="RayCast3D" parent="camera" unique_id=1849869206]
 unique_name_in_owner = true
-transform = Transform3D(5, 0, 0, 0, -2.1855695e-07, -5, 0, 5, -2.1855695e-07, 0, 0, 0.343)
+transform = Transform3D(5, 0, 0, 0, -2.1855695e-07, -5, 0, 5, -2.1855695e-07, 0, 0, -0.020305097)
 debug_shape_thickness = 5
 
 [node name="Interaction" type="CanvasLayer" parent="." unique_id=161352918]
