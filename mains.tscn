@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://beh64vhwxdapa" path="res://sprinting.png" id="11_cfh6e"]
 [ext_resource type="Script" uid="uid://c2gv6f6ajhxc7" path="res://palm_tree.gd" id="11_wtmx0"]
 [ext_resource type="PackedScene" uid="uid://cvkv7ursrd7eg" path="res://coconut.tscn" id="13_2ofmp"]
+[ext_resource type="PackedScene" uid="uid://b5wbeu8spjhp2" path="res://cabin.glb" id="14_pkgfc"]
 [ext_resource type="Texture2D" uid="uid://ctwxtnx2cpomk" path="res://star.png" id="14_vcjbc"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7xr7w"]
@@ -188,6 +189,9 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
 theme_override_font_sizes/normal_font_size = 18
 fit_content = true
+
+[node name="cabin" parent="." unique_id=912480962 instance=ExtResource("14_pkgfc")]
+transform = Transform3D(-0.2999145, 0, 0.0071621505, 0, 0.3, 0, -0.0071621505, 0, -0.2999145, 33.538788, 0.7464385, -38.39947)
 
 [node name="COCONUTFOLDER" type="Node3D" parent="." unique_id=1637966604]
 unique_name_in_owner = true
