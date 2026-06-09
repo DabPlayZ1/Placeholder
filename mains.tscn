@@ -10,11 +10,14 @@
 [ext_resource type="PackedScene" uid="uid://b78j5kto53rw4" path="res://dock.glb" id="8_j1baa"]
 [ext_resource type="PackedScene" uid="uid://2apfcrdvcwpt" path="res://rock.tscn" id="9_ti338"]
 [ext_resource type="PackedScene" uid="uid://cjxpjnkbvrv6n" path="res://palm_tree.tscn" id="10_haupa"]
+[ext_resource type="Script" uid="uid://gjh8psk2jqd" path="res://rock2.gd" id="10_sj3ug"]
 [ext_resource type="Texture2D" uid="uid://beh64vhwxdapa" path="res://sprinting.png" id="11_cfh6e"]
 [ext_resource type="Script" uid="uid://c2gv6f6ajhxc7" path="res://palm_tree.gd" id="11_wtmx0"]
+[ext_resource type="Script" uid="uid://bu031loq7kt8x" path="res://palm_tree2.gd" id="12_t0dwl"]
 [ext_resource type="PackedScene" uid="uid://cvkv7ursrd7eg" path="res://coconut.tscn" id="13_2ofmp"]
 [ext_resource type="PackedScene" uid="uid://b5wbeu8spjhp2" path="res://cabin.glb" id="14_pkgfc"]
 [ext_resource type="Texture2D" uid="uid://ctwxtnx2cpomk" path="res://star.png" id="14_vcjbc"]
+[ext_resource type="Script" uid="uid://cbfcphqky4jpp" path="res://jumpchecker.gd" id="18_a7ohr"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7xr7w"]
 sky_top_color = Color(0.41801074, 0.60166144, 0.9538794, 1)
@@ -71,6 +74,9 @@ size = Vector3(9.956734, 2.171955, 16.286926)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ctard"]
 size = Vector3(1, 3.9824219, 4.666992)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_842ur"]
+size = Vector3(0.38934326, 1, 0.48064804)
 
 [node name="Node3D" type="Node3D" unique_id=1140575817]
 
@@ -168,11 +174,20 @@ texture = ExtResource("7_ti338")
 [node name="dock" parent="." unique_id=512037529 instance=ExtResource("8_j1baa")]
 transform = Transform3D(-2.1855694e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.1855694e-08, 64.785904, -2.5173504, 1.8381567)
 
-[node name="rock" parent="." unique_id=1695545979 instance=ExtResource("9_ti338")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 11.116823, 0.5142275, -6.4222283)
+[node name="Long Rock" parent="." unique_id=1695545979 instance=ExtResource("9_ti338")]
+unique_name_in_owner = true
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 1.5, 54.54188, 0.5142275, -0.63326615)
+script = ExtResource("10_sj3ug")
 
-[node name="PalmTree" parent="." unique_id=97979337 instance=ExtResource("10_haupa")]
+[node name="rock" parent="." unique_id=1635139551 instance=ExtResource("9_ti338")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -15.731401, 0.5142275, -16.680561)
+
+[node name="Palm Tree" parent="." unique_id=97979337 instance=ExtResource("10_haupa")]
 script = ExtResource("11_wtmx0")
+
+[node name="Blind Palm Tree" parent="." unique_id=409076167 instance=ExtResource("10_haupa")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 9.636001, 0.4788686, 40.98355)
+script = ExtResource("12_t0dwl")
 
 [node name="Sprinting" type="Sprite2D" parent="." unique_id=1096736627]
 unique_name_in_owner = true
@@ -265,5 +280,15 @@ transform = Transform3D(0.4390614, -0.69947404, -0.56388044, 0.82819366, 0.55839
 
 [node name="Coconut1" parent="COCONUTFOLDER" unique_id=403770604 instance=ExtResource("13_2ofmp")]
 transform = Transform3D(0.43906137, -0.69947404, -0.5638805, 0.82819366, 0.55839914, -0.04780778, 0.3483107, -0.44601172, 0.8244715, 3.607666, 0.17508513, -3.721963)
+
+[node name="jumpchecker" type="Area3D" parent="." unique_id=970789151]
+transform = Transform3D(-2.2815001e-07, -0.99999994, 0, 5.219464, -4.3711385e-08, 0, 0, 0, 12.808385, 56.406708, 1.8176322, 2.3150172)
+script = ExtResource("18_a7ohr")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="jumpchecker" unique_id=1081151047]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.9999998, -0.15201569, 0.1567688, -0.23352973)
+shape = SubResource("BoxShape3D_842ur")
+
+[connection signal="body_entered" from="jumpchecker" to="jumpchecker" method="_on_body_entered"]
 
 [editable path="cabin"]

@@ -29,7 +29,9 @@ func _process(delta: float) -> void:
 			changetext(diagtext[dialoguenumber])
 			cooldown = 0
 		else:
+			var tween = get_tree().create_tween()
+			tween.tween_property(self, "modulate", Color(1,1,1,0), 0.2)
+			await tween.finished
 			dialogueon = false
 			dialoguenumber = -1
-			get_tree().create_tween().tween_property(self, "modulate", Color(1,1,1,0), 1)
 			%Player.can_move = true
