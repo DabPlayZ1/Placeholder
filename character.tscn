@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cviect72a6yhe" path="res://Dialoguebox.png" id="1_glpr6"]
 [ext_resource type="Texture2D" uid="uid://b4drysii0dxgp" path="res://interact.png" id="2_pjt0s"]
+[ext_resource type="Texture2D" uid="uid://ikxx6aeck1fe" path="res://crosswhite.png" id="3_wa5vi"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vu45j"]
 radius = 0.34521484
@@ -81,3 +82,18 @@ z_index = 1
 position = Vector2(608, 533.99994)
 scale = Vector2(0.22291675, 0.22291677)
 texture = ExtResource("2_pjt0s")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1174055869]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -175.0
+offset_top = -189.0
+offset_right = 179.0
+offset_bottom = 165.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_wa5vi")
+expand_mode = 1

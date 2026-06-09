@@ -12,6 +12,8 @@
 [ext_resource type="PackedScene" uid="uid://cjxpjnkbvrv6n" path="res://palm_tree.tscn" id="10_haupa"]
 [ext_resource type="Texture2D" uid="uid://beh64vhwxdapa" path="res://sprinting.png" id="11_cfh6e"]
 [ext_resource type="Script" uid="uid://c2gv6f6ajhxc7" path="res://palm_tree.gd" id="11_wtmx0"]
+[ext_resource type="PackedScene" uid="uid://cvkv7ursrd7eg" path="res://coconut.tscn" id="13_2ofmp"]
+[ext_resource type="Texture2D" uid="uid://ctwxtnx2cpomk" path="res://star.png" id="14_vcjbc"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7xr7w"]
 sky_top_color = Color(0.41801074, 0.60166144, 0.9538794, 1)
@@ -165,3 +167,36 @@ theme_override_constants/outline_size = 2
 theme_override_font_sizes/normal_font_size = 18
 text = "Objectives:"
 fit_content = true
+
+[node name="Statuscont" type="CanvasLayer" parent="." unique_id=773705215]
+unique_name_in_owner = true
+visible = false
+
+[node name="Star" type="Sprite2D" parent="Statuscont" unique_id=1316959215]
+position = Vector2(996, 68)
+scale = Vector2(0.06, 0.06)
+texture = ExtResource("14_vcjbc")
+
+[node name="Status" type="RichTextLabel" parent="Statuscont" unique_id=255448501]
+unique_name_in_owner = true
+offset_left = 1009.0
+offset_top = 57.0
+offset_right = 1147.0
+offset_bottom = 84.0
+theme_override_colors/default_color = Color(0.966103, 0.9660323, 2.3102762e-06, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/normal_font_size = 18
+fit_content = true
+
+[node name="COCONUTFOLDER" type="Node3D" parent="." unique_id=1637966604]
+unique_name_in_owner = true
+
+[node name="Coconut2" parent="COCONUTFOLDER" unique_id=1279497445 instance=ExtResource("13_2ofmp")]
+transform = Transform3D(0.4390614, -0.69947404, -0.56388044, 0.82819366, 0.55839914, -0.047807753, 0.34831065, -0.44601166, 0.8244715, 64.910065, 0.34930235, -2.9974036)
+
+[node name="Coconut3" parent="COCONUTFOLDER" unique_id=1243992859 instance=ExtResource("13_2ofmp")]
+transform = Transform3D(0.4390614, -0.69947404, -0.56388044, 0.82819366, 0.55839914, -0.047807753, 0.34831065, -0.44601166, 0.8244715, 53.12138, 0.1848343, 20.194172)
+
+[node name="Coconut1" parent="COCONUTFOLDER" unique_id=403770604 instance=ExtResource("13_2ofmp")]
+transform = Transform3D(0.43906137, -0.69947404, -0.5638805, 0.82819366, 0.55839914, -0.04780778, 0.3483107, -0.44601172, 0.8244715, 3.607666, 0.17508513, -3.721963)

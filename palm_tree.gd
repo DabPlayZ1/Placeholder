@@ -14,8 +14,9 @@ func interact():
 		%Dialogue.dialogueon = true
 		%Objectives.text += quest_name
 		quested = true
-		await get_tree().create_timer(10).timeout
-		%Player.coconuts = 7
+		for coconut in %COCONUTFOLDER.get_children():
+			coconut.process_mode = Node.PROCESS_MODE_INHERIT
+			coconut.show()
 	elif %Player.coconuts == 7 and quested == true:
 		%Header.text = "Palm Tree"
 		%Player.can_move = false

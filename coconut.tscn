@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://cvkv7ursrd7eg"]
+
+[ext_resource type="PackedScene" uid="uid://bf8pihl2nkafn" path="res://coconut.glb" id="1_68kns"]
+[ext_resource type="Script" uid="uid://ckmwrmsbsw430" path="res://coconut.gd" id="1_gktd8"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_gktd8"]
+radius = 0.3
+
+[node name="Coconut" type="StaticBody3D" unique_id=1279497445]
+script = ExtResource("1_gktd8")
+
+[node name="coconut" parent="." unique_id=1252337964 instance=ExtResource("1_68kns")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=255786419]
+shape = SubResource("SphereShape3D_gktd8")
