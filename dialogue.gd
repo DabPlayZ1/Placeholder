@@ -26,6 +26,8 @@ func _process(delta: float) -> void:
 		if not diagtext.size() == dialoguenumber+1:
 			modulate = Color(1,1,1,1)
 			dialoguenumber += 1
+			print("dialoguenumber =", dialoguenumber)
+			print("size =", diagtext.size())
 			changetext(diagtext[dialoguenumber])
 			cooldown = 0
 		else:

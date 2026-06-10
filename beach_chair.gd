@@ -3,11 +3,17 @@ var dialogue : Array = ["What a relaxing day.", "Good sun, sitting back, enjoyin
 var dialogue2 : Array = ["Looks like you made palm tree pretty mad.", "How about we have a challenge?", "If you win, I'll give you palm tree's nuts.", "Don't move for 1 minute and you win.", "START"]
 var win : Array = ["Looks like you moved. No nuts for you.", "Now let's play Heads or tails."]
 var lose : Array = ["You actually thought I was telling the truth?", "You're so stupid lol.", "Get scammed idiot."]
+var start : Array = ["Alright so Heads or Tails?"]
+var heads : Array = ["Haha noob, it's tails. You Lose bozo. Try again another time"]
+var tails : Array = ["Haha noob, it's heads. You Lose bozo. Try again another time"]
+var clicked_heads : bool = false
 var quested : bool = false
-func _ready():
-	await get_tree().create_timer(1).timeout
-	movechallenge()
+var heads_or_tails : bool = false
+var interactable : bool = true
+
 func interact():
+	if !interactable:
+		return
 	if %Player.palmquest == false:
 		%Header.text = "Beach Chair"
 		%Player.can_move = false
@@ -29,16 +35,45 @@ func movechallenge():
 			await get_tree().create_timer(1).timeout
 		else:
 			break
+
 	if %Player.moved == true:
 		print("MOVED")
 		%Header.text = "Beach Chair"
 		%Player.can_move = false
 		%Dialogue.dialogueon = true
 		%Dialogue.diagtext = win
+		interactable = false
 	elif %Player.moved == false:
 		%Header.text = "Beach Chair"
 		%Player.can_move = false
 		%Dialogue.dialogueon = true
 		%Dialogue.diagtext = lose
 		await get_tree().create_timer(1).timeout
-		
+	heads_or_tails = true
+	if heads_or_tails == true:
+		%Header.text = "Beach Chair"
+		%Dialogue.dialogueon = true
+		%Dialogue.diagtext = start
+		%Player.can_move = false
+		%HeadsButton.visible = true
+		%TailsButton.visible = true
+func _on_heads_button_pressed() -> void:
+	%HeadsButton.visible = false
+	%TailsButton.visible = false
+	interactable = true
+	clicked_heads = true
+	%Dialogue.dialoguenumber = -1
+	%Dialogue.dialogueon = true
+	%Dialogue.diagtext = heads
+	interactable = true
+
+
+func _on_tails_button_pressed() -> void:
+	%HeadsButton.visible = false
+	%TailsButton.visible = false
+	interactable = true
+	clicked_heads = true
+	%Dialogue.dialoguenumber = -1
+	%Dialogue.dialogueon = true
+	%Dialogue.diagtext = tails
+	interactable = true

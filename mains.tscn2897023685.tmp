@@ -344,7 +344,5 @@ texture_pressed = ExtResource("21_nfsx2")
 texture_hover = ExtResource("23_842ur")
 
 [connection signal="body_entered" from="jumpchecker" to="jumpchecker" method="_on_body_entered"]
-[connection signal="pressed" from="CanvasLayer/HeadsButton" to="Beach Chair" method="_on_heads_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/TailsButton" to="Beach Chair" method="_on_tails_button_pressed"]
 
 [editable path="cabin"]
