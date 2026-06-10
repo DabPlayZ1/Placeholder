@@ -6,10 +6,15 @@ var lose : Array = ["You actually thought I was telling the truth?", "You're so 
 var start : Array = ["Alright so Heads or Tails?"]
 var heads : Array = ["Haha noob, it's tails. You Lose bozo. Try again another time"]
 var tails : Array = ["Haha noob, it's heads. You Lose bozo. Try again another time"]
+var replay_dialogue : Array = [
+	"Back for another round?",
+    "Heads or tails?"
+]
 var clicked_heads : bool = false
 var quested : bool = false
 var heads_or_tails : bool = false
 var interactable : bool = true
+var lostonce : bool = false
 
 func interact():
 	if !interactable:
@@ -28,6 +33,15 @@ func interact():
 		%Dialogue.dialogueon = true
 		%Objectives.text += "\nDon't move."
 		movechallenge()
+	if lostonce == true:
+		%Header.text = "Beach Chair"
+		%Player.can_move = false
+		%Dialogue.dialoguenumber = -1
+		%Dialogue.diagtext = replay_dialogue
+		%Dialogue.dialogueon = true
+		heads_or_tails = true
+		%HeadsButton.visible = true
+		%TailsButton.visible = true
 func movechallenge():
 	for i in range(10):
 		if %Player.moved == false:
@@ -57,7 +71,9 @@ func movechallenge():
 		%Player.can_move = false
 		%HeadsButton.visible = true
 		%TailsButton.visible = true
+
 func _on_heads_button_pressed() -> void:
+	heads_or_tails = false
 	%HeadsButton.visible = false
 	%TailsButton.visible = false
 	interactable = true
@@ -66,9 +82,11 @@ func _on_heads_button_pressed() -> void:
 	%Dialogue.dialogueon = true
 	%Dialogue.diagtext = heads
 	interactable = true
+	lostonce = true
 
 
 func _on_tails_button_pressed() -> void:
+	heads_or_tails = false
 	%HeadsButton.visible = false
 	%TailsButton.visible = false
 	interactable = true
@@ -77,3 +95,4 @@ func _on_tails_button_pressed() -> void:
 	%Dialogue.dialogueon = true
 	%Dialogue.diagtext = tails
 	interactable = true
+	lostonce = true
