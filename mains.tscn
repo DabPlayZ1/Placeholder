@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://2apfcrdvcwpt" path="res://rock.tscn" id="9_ti338"]
 [ext_resource type="PackedScene" uid="uid://cjxpjnkbvrv6n" path="res://palm_tree.tscn" id="10_haupa"]
 [ext_resource type="Script" uid="uid://gjh8psk2jqd" path="res://rock2.gd" id="10_sj3ug"]
+[ext_resource type="Script" uid="uid://b0ec1uij2wf8" path="res://rock.gd" id="11_bpu7c"]
 [ext_resource type="Texture2D" uid="uid://beh64vhwxdapa" path="res://sprinting.png" id="11_cfh6e"]
 [ext_resource type="Script" uid="uid://c2gv6f6ajhxc7" path="res://palm_tree.gd" id="11_wtmx0"]
 [ext_resource type="Script" uid="uid://bu031loq7kt8x" path="res://palm_tree2.gd" id="12_t0dwl"]
@@ -23,6 +24,11 @@
 [ext_resource type="Texture2D" uid="uid://cw6dhqbq7e6vy" path="res://Headshover.png" id="21_ctard"]
 [ext_resource type="Texture2D" uid="uid://cfhuktf0bvhqx" path="res://Tails.png" id="21_nfsx2"]
 [ext_resource type="Texture2D" uid="uid://bgh2jidmi25tg" path="res://tailshovered.png" id="23_842ur"]
+[ext_resource type="Texture2D" uid="uid://qhploshadrwb" path="res://fe0e8236b49946995e7af8e02976e243.jpg" id="24_2ftuh"]
+[ext_resource type="Texture2D" uid="uid://brn6ufodxp8qg" path="res://fe0e8236b49946995e7af8e02976e243-removebg-preview.jpg" id="25_bpu7c"]
+[ext_resource type="Texture2D" uid="uid://bu6ka4kwave7k" path="res://15c4d790bc41f466f3e210d3840c849d.jpg" id="25_rn2sg"]
+[ext_resource type="Texture2D" uid="uid://8sdfumgw342b" path="res://15c4d790bc41f466f3e210d3840c849d (1)-removebg-preview-removebg-preview.jpg" id="26_2ftuh"]
+[ext_resource type="Texture2D" uid="uid://cujx5p5e2asty" path="res://67ebfd32e898b4ec3ae4e59ae33832c8-removebg-preview.png" id="28_rn2sg"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7xr7w"]
 sky_top_color = Color(0.41801074, 0.60166144, 0.9538794, 1)
@@ -82,6 +88,15 @@ size = Vector3(1, 3.9824219, 4.666992)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_842ur"]
 size = Vector3(0.38934326, 1, 0.48064804)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2ftuh"]
+load_path = "res://.godot/imported/15c4d790bc41f466f3e210d3840c849d.jpg-6cb1dfe66b89e46a6d718242d39a72d1.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_6ixss"]
+load_path = "res://.godot/imported/67ebfd32e898b4ec3ae4e59ae33832c8.jpg-e12f5690b5a52ebb23b3e7ba571b2cf0.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_rn2sg"]
+load_path = "res://.godot/imported/67ebfd32e898b4ec3ae4e59ae33832c8.jpg-e12f5690b5a52ebb23b3e7ba571b2cf0.ctex"
 
 [node name="Node3D" type="Node3D" unique_id=1140575817]
 
@@ -186,6 +201,7 @@ script = ExtResource("10_sj3ug")
 
 [node name="rock" parent="." unique_id=1635139551 instance=ExtResource("9_ti338")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -15.731401, 0.5142275, -16.680561)
+script = ExtResource("11_bpu7c")
 
 [node name="Palm Tree" parent="." unique_id=97979337 instance=ExtResource("10_haupa")]
 script = ExtResource("11_wtmx0")
@@ -342,6 +358,50 @@ scale = Vector2(0.2, 0.2)
 texture_normal = ExtResource("21_nfsx2")
 texture_pressed = ExtResource("21_nfsx2")
 texture_hover = ExtResource("23_842ur")
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=972300083]
+
+[node name="RockButton" type="TextureButton" parent="CanvasLayer2" unique_id=970797493]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 255.0
+offset_top = -448.0
+offset_right = 708.0
+offset_bottom = -3.0
+grow_vertical = 0
+scale = Vector2(0.3, 0.3)
+texture_normal = ExtResource("24_2ftuh")
+texture_pressed = ExtResource("24_2ftuh")
+texture_hover = ExtResource("25_bpu7c")
+
+[node name="PaperButton" type="TextureButton" parent="CanvasLayer2" unique_id=959672379]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 510.0
+offset_top = -448.0
+offset_right = 963.0
+offset_bottom = -3.0
+grow_vertical = 0
+scale = Vector2(0.3, 0.3)
+texture_normal = ExtResource("25_rn2sg")
+texture_pressed = SubResource("CompressedTexture2D_2ftuh")
+texture_hover = ExtResource("26_2ftuh")
+
+[node name="ScissorButton" type="TextureButton" parent="CanvasLayer2" unique_id=1576849813]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 765.0
+offset_top = -448.0
+offset_right = 1218.0
+offset_bottom = -3.0
+grow_vertical = 0
+scale = Vector2(0.32, 0.32)
+texture_normal = SubResource("CompressedTexture2D_6ixss")
+texture_pressed = SubResource("CompressedTexture2D_rn2sg")
+texture_hover = ExtResource("28_rn2sg")
 
 [connection signal="body_entered" from="jumpchecker" to="jumpchecker" method="_on_body_entered"]
 [connection signal="pressed" from="CanvasLayer/HeadsButton" to="Beach Chair" method="_on_heads_button_pressed"]
