@@ -8,6 +8,8 @@ var jumpheight : int = 16
 var sensitivity : float = 0.5
 @export var can_move : bool = true
 @export var coconuts : int = 0
+@export var palmquest : bool = true
+@export var moved : bool = false
 var sprint_multiplier : float  = 1.5
 
 func _ready() -> void:
@@ -50,6 +52,8 @@ func _physics_process(delta: float) -> void:
 			%Sprinting.visible = false
 			
 		var directions : Vector2 = Input.get_vector("Left", "Right", "Forward", "Backwards")
+		if not directions == Vector2(0,0):
+			moved = true
 		var movement : Vector3 = Vector3(directions.x, 0, directions.y).normalized()
 		var local_movement : Vector3 = transform.basis * movement
 		
@@ -60,6 +64,7 @@ func _physics_process(delta: float) -> void:
 		
 		if Input.is_action_pressed("Jump") and is_on_floor():
 			velocity.y = jumpheight
+			moved = true
 		move_and_slide()
 
 

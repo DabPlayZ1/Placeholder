@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://di8w62aid6h8d"]
+
+[ext_resource type="Script" uid="uid://cueukq34h7fwr" path="res://beach_chair.gd" id="1_1dur3"]
+[ext_resource type="PackedScene" uid="uid://dfc3uq5c530em" path="res://beachchair.glb" id="1_g0l87"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1dur3"]
+size = Vector3(1.8609619, 0.3152771, 0.903183)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3xpaw"]
+size = Vector3(0.8388214, 0.14131927, 0.89453125)
+
+[node name="Beach Chair" type="StaticBody3D" unique_id=1176658418]
+script = ExtResource("1_1dur3")
+
+[node name="beachchair" parent="." unique_id=1366567711 instance=ExtResource("1_g0l87")]
+transform = Transform3D(0.227, 0, 0, 0, 0.318, 0, 0, 0, 0.3, 1.0680984, 1.1920929e-07, -0.84039974)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=557634004]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.88098156, -0.11909485, -0.84076065)
+shape = SubResource("BoxShape3D_1dur3")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=2131353223]
+transform = Transform3D(0.6427876, 0.7660444, 0, -0.7660444, 0.6427876, 0, 0, 0, 1, 0.07177654, 0.29835266, -0.84076065)
+shape = SubResource("BoxShape3D_3xpaw")

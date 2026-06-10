@@ -22,7 +22,7 @@ func _ready() -> void:
 	%Player.can_move = false
 func _process(delta: float) -> void:
 	cooldown += delta
-	if Input.is_action_just_pressed("Interact") and dialogueon == true and cooldown > 0.5:
+	if (Input.is_action_just_pressed("Interact") or dialoguenumber == -1) and dialogueon == true and cooldown > 0.5:
 		if not diagtext.size() == dialoguenumber+1:
 			modulate = Color(1,1,1,1)
 			dialoguenumber += 1

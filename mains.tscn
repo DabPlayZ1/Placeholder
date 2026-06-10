@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://b5wbeu8spjhp2" path="res://cabin.glb" id="14_pkgfc"]
 [ext_resource type="Texture2D" uid="uid://ctwxtnx2cpomk" path="res://star.png" id="14_vcjbc"]
 [ext_resource type="Script" uid="uid://cbfcphqky4jpp" path="res://jumpchecker.gd" id="18_a7ohr"]
+[ext_resource type="PackedScene" uid="uid://di8w62aid6h8d" path="res://beach_chair.tscn" id="19_18qbt"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7xr7w"]
 sky_top_color = Color(0.41801074, 0.60166144, 0.9538794, 1)
@@ -230,7 +231,7 @@ theme_override_font_sizes/normal_font_size = 18
 fit_content = true
 
 [node name="cabin" parent="." unique_id=912480962 instance=ExtResource("14_pkgfc")]
-transform = Transform3D(-0.2999145, 0, 0.0071621505, 0, 0.3, 0, -0.0071621505, 0, -0.2999145, 33.538788, 0.7464385, -38.39947)
+transform = Transform3D(0.29991046, 0, -0.0073295883, 0, 0.3, 0, 0.0073295883, 0, 0.29991046, 19.639086, 0.7464385, -43.0799)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="cabin" unique_id=1083188247]
 
@@ -276,10 +277,19 @@ transform = Transform3D(0.4390614, -0.69947404, -0.56388044, 0.82819366, 0.55839
 transform = Transform3D(0.4390614, -0.69947404, -0.56388044, 0.82819366, 0.55839914, -0.047807753, 0.34831065, -0.44601166, 0.8244715, 53.12138, 0.1848343, 20.194172)
 
 [node name="Coconut4" parent="COCONUTFOLDER" unique_id=966633485 instance=ExtResource("13_2ofmp")]
-transform = Transform3D(0.4390614, -0.69947404, -0.56388044, 0.82819366, 0.55839914, -0.047807753, 0.34831065, -0.44601166, 0.8244715, 34.082043, 0.72826844, -41.56408)
+transform = Transform3D(-0.32952592, 0.5530739, 0.76519394, 0.8281171, 0.55857205, -0.04710645, -0.45346934, 0.6181475, -0.642074, 19.058283, 0.72826844, -40.048405)
 
 [node name="Coconut1" parent="COCONUTFOLDER" unique_id=403770604 instance=ExtResource("13_2ofmp")]
 transform = Transform3D(0.43906137, -0.69947404, -0.5638805, 0.82819366, 0.55839914, -0.04780778, 0.3483107, -0.44601172, 0.8244715, 3.607666, 0.17508513, -3.721963)
+
+[node name="Coconut5" parent="COCONUTFOLDER" unique_id=1180999889 instance=ExtResource("13_2ofmp")]
+transform = Transform3D(0.43906137, -0.69947404, -0.5638805, 0.82819366, 0.55839914, -0.04780778, 0.3483107, -0.44601172, 0.8244715, 10.160851, 0.17508525, 41.228268)
+
+[node name="Coconut6" parent="COCONUTFOLDER" unique_id=1979341439 instance=ExtResource("13_2ofmp")]
+transform = Transform3D(0.43906137, -0.69947404, -0.5638805, 0.82819366, 0.55839914, -0.04780778, 0.3483107, -0.44601172, 0.8244715, 53.748882, 0.17508334, -20.827494)
+
+[node name="Coconut7" parent="COCONUTFOLDER" unique_id=1780930653 instance=ExtResource("13_2ofmp")]
+transform = Transform3D(0.43906137, -0.69947404, -0.5638805, 0.82819366, 0.55839914, -0.04780778, 0.3483107, -0.44601172, 0.8244715, -16.988497, 0.17508525, -17.440922)
 
 [node name="jumpchecker" type="Area3D" parent="." unique_id=970789151]
 transform = Transform3D(-2.2815001e-07, -0.99999994, 0, 5.219464, -4.3711385e-08, 0, 0, 0, 12.808385, 56.406708, 1.8176322, 2.3150172)
@@ -288,6 +298,9 @@ script = ExtResource("18_a7ohr")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="jumpchecker" unique_id=1081151047]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.9999998, -0.15201569, 0.1567688, -0.23352973)
 shape = SubResource("BoxShape3D_842ur")
+
+[node name="Beach Chair" parent="." unique_id=1176658418 instance=ExtResource("19_18qbt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53.004128, 0.28705296, -19.290474)
 
 [connection signal="body_entered" from="jumpchecker" to="jumpchecker" method="_on_body_entered"]
 
