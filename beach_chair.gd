@@ -1,11 +1,12 @@
 extends StaticBody3D
 var dialogue : Array = ["What a relaxing day.", "Good sun, sitting back, enjoying the view.."]
 var dialogue2 : Array = ["Looks like you made palm tree pretty mad.", "How about we have a challenge?", "If you win, I'll give you palm tree's nuts.", "Don't move for 1 minute and you win.", "START"]
-var win : Array = ["Looks like you moved.", "Now you have to play Rock, Paper, Scissors with me."]
-var lose : Array = ["Sorry bud. I was hired to keep you in place."]
+var win : Array = ["Looks like you moved. No nuts for you.", "Now let's play Heads or tails."]
+var lose : Array = ["You actually thought I was telling the truth?", "You're so stupid lol.", "Get scammed idiot."]
 var quested : bool = false
 func _ready():
-	await get_tree().create_timer(7.5).timeout
+	await get_tree().create_timer(1).timeout
+	movechallenge()
 func interact():
 	if %Player.palmquest == false:
 		%Header.text = "Beach Chair"
@@ -39,4 +40,5 @@ func movechallenge():
 		%Player.can_move = false
 		%Dialogue.dialogueon = true
 		%Dialogue.diagtext = lose
+		await get_tree().create_timer(1).timeout
 		
