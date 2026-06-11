@@ -1,4 +1,5 @@
 extends Control
+signal dialogue_finished
 @export var diagtext = [
 "Hey", 
 "I'm gonna teach you about the game.", 
@@ -26,8 +27,6 @@ func _process(delta: float) -> void:
 		if not diagtext.size() == dialoguenumber+1:
 			modulate = Color(1,1,1,1)
 			dialoguenumber += 1
-			print("dialoguenumber =", dialoguenumber)
-			print("size =", diagtext.size())
 			changetext(diagtext[dialoguenumber])
 			cooldown = 0
 		else:
@@ -37,3 +36,4 @@ func _process(delta: float) -> void:
 			dialogueon = false
 			dialoguenumber = -1
 			%Player.can_move = true
+			dialogue_finished.emit()

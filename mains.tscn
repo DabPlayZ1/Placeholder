@@ -200,6 +200,7 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 1.5, 54.54188, 0.5142275, -0
 script = ExtResource("10_sj3ug")
 
 [node name="rock" parent="." unique_id=1635139551 instance=ExtResource("9_ti338")]
+unique_name_in_owner = true
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -15.731401, 0.5142275, -16.680561)
 script = ExtResource("11_bpu7c")
 
@@ -362,6 +363,8 @@ texture_hover = ExtResource("23_842ur")
 [node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=972300083]
 
 [node name="RockButton" type="TextureButton" parent="CanvasLayer2" unique_id=970797493]
+unique_name_in_owner = true
+visible = false
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -376,6 +379,8 @@ texture_pressed = ExtResource("24_2ftuh")
 texture_hover = ExtResource("25_bpu7c")
 
 [node name="PaperButton" type="TextureButton" parent="CanvasLayer2" unique_id=959672379]
+unique_name_in_owner = true
+visible = false
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -390,6 +395,8 @@ texture_pressed = SubResource("CompressedTexture2D_2ftuh")
 texture_hover = ExtResource("26_2ftuh")
 
 [node name="ScissorButton" type="TextureButton" parent="CanvasLayer2" unique_id=1576849813]
+unique_name_in_owner = true
+visible = false
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -406,5 +413,8 @@ texture_hover = ExtResource("28_rn2sg")
 [connection signal="body_entered" from="jumpchecker" to="jumpchecker" method="_on_body_entered"]
 [connection signal="pressed" from="CanvasLayer/HeadsButton" to="Beach Chair" method="_on_heads_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/TailsButton" to="Beach Chair" method="_on_tails_button_pressed"]
+[connection signal="pressed" from="CanvasLayer2/RockButton" to="rock" method="_on_rock_button_pressed"]
+[connection signal="pressed" from="CanvasLayer2/PaperButton" to="rock" method="_on_paper_button_pressed"]
+[connection signal="pressed" from="CanvasLayer2/ScissorButton" to="rock" method="_on_scissor_button_pressed"]
 
 [editable path="cabin"]
