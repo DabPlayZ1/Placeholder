@@ -199,7 +199,7 @@ unique_name_in_owner = true
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 1.5, 54.54188, 0.5142275, -0.63326615)
 script = ExtResource("10_sj3ug")
 
-[node name="rock" parent="." unique_id=1635139551 instance=ExtResource("9_ti338")]
+[node name="Rock" parent="." unique_id=1635139551 instance=ExtResource("9_ti338")]
 unique_name_in_owner = true
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -15.731401, 0.5142275, -16.680561)
 script = ExtResource("11_bpu7c")
@@ -413,8 +413,8 @@ texture_hover = ExtResource("28_rn2sg")
 [connection signal="body_entered" from="jumpchecker" to="jumpchecker" method="_on_body_entered"]
 [connection signal="pressed" from="CanvasLayer/HeadsButton" to="Beach Chair" method="_on_heads_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/TailsButton" to="Beach Chair" method="_on_tails_button_pressed"]
-[connection signal="pressed" from="CanvasLayer2/RockButton" to="rock" method="_on_rock_button_pressed"]
-[connection signal="pressed" from="CanvasLayer2/PaperButton" to="rock" method="_on_paper_button_pressed"]
-[connection signal="pressed" from="CanvasLayer2/ScissorButton" to="rock" method="_on_scissor_button_pressed"]
+[connection signal="pressed" from="CanvasLayer2/RockButton" to="Rock" method="_on_rock_button_pressed"]
+[connection signal="pressed" from="CanvasLayer2/PaperButton" to="Rock" method="_on_paper_button_pressed"]
+[connection signal="pressed" from="CanvasLayer2/ScissorButton" to="Rock" method="_on_scissor_button_pressed"]
 
 [editable path="cabin"]

@@ -10,6 +10,7 @@ var sensitivity : float = 0.5
 @export var coconuts : int = 0
 @export var palmquest : bool = true
 @export var moved : bool = false
+@export var playing : bool = false
 var sprint_multiplier : float  = 1.5
 
 func _ready() -> void:
@@ -35,7 +36,7 @@ func _physics_process(delta: float) -> void:
 	%Interaction.hide()
 	if %SeeCast.is_colliding():
 		var target = %SeeCast.get_collider()
-		if target != null and target.has_method("interact") and %Dialogue.dialogueon == false:
+		if target != null and target.has_method("interact") and %Dialogue.dialogueon == false and playing == false:
 			%Interaction.show()
 			%Name.text = target.name
 			if Input.is_action_just_pressed("Interact"):
