@@ -1,6 +1,7 @@
 extends StaticBody3D
 
 var lost = false
+@export var played = false
 var quested : bool = false
 var Idle : Array = ["Wassup dude, I'm rockin. It's cool being this hard sometimes."]
 var WannaPlay : Array = ["Wanna know how to rock with me", "Beat me in my game then."]
@@ -35,6 +36,7 @@ func interact():
 		await %Dialogue.dialogue_finished
 		ReverseRPS()
 func ReverseRPS():
+		played = true
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 		%Player.captured = false
 		%Header.text = "The Rock"

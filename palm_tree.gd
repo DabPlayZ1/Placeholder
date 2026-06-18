@@ -2,7 +2,7 @@ extends StaticBody3D
 
 @export var quest_name : String = "\nFind 7 Coconuts"
 @export var questtext : Array = ["YO BRO WASSUP.", "I DUN DID AND LOS MY NUTS.", "GO GET EM FOR ME, THX"]
-@export var rewardtext : Array  = ["Are you an idiot?", "I said I lost my nuts, not coconuts.", "Get out of my sight."]
+@export var rewardtext : Array  = ["Are you an idiot?", "I said I lost my nuts, not coconuts.","I'm a WALNUT tree after all.", "Get out of my sight."]
 var quested : bool = false
 func interact():
 	if quested == false:
@@ -23,3 +23,5 @@ func interact():
 		%Dialogue.dialogueon = true
 		%Objectives.text = %Objectives.text.replace("\nFind 7 Coconuts", "")
 		%Player.palmquest = true
+		await %Dialogue.dialogue_finished
+		self.name = "Walnut Tree"

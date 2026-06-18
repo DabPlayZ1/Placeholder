@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://o21hf8xg6jhf"]
+
+[ext_resource type="Script" uid="uid://cdfqqh2fji4ey" path="res://truthseeker.gd" id="1_m28ev"]
+[ext_resource type="PackedScene" uid="uid://c7c00ny45jw65" path="res://sunflower.glb" id="1_ofdy6"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_m28ev"]
+height = 10.927919
+radius = 1.1
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gyhon"]
+size = Vector3(6.399414, 4.2682495, 5.339905)
+
+[node name="Truthseeker" type="StaticBody3D" unique_id=790421598]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+script = ExtResource("1_m28ev")
+
+[node name="sunflower" parent="." unique_id=1949625329 instance=ExtResource("1_ofdy6")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=679933411]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9245616, 3.6759243, 0.4448262)
+shape = SubResource("CylinderShape3D_m28ev")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=411678788]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0224609, 9.25625, 0.3572781)
+shape = SubResource("BoxShape3D_gyhon")

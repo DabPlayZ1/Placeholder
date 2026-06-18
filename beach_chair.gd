@@ -14,7 +14,7 @@ var clicked_heads : bool = false
 var quested : bool = false
 var heads_or_tails : bool = false
 var interactable : bool = true
-var lostonce : bool = false
+@export var lostonce : bool = false
 
 func interact():
 	if !interactable:
@@ -45,7 +45,7 @@ func interact():
 		%Player.captured = false
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 func movechallenge():
-	for i in range(10):
+	for i in range(60):
 		if %Player.moved == false:
 			print("not yet")
 			await get_tree().create_timer(1).timeout

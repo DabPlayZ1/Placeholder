@@ -8,9 +8,10 @@ var jumpheight : int = 16
 var sensitivity : float = 0.5
 @export var can_move : bool = true
 @export var coconuts : int = 0
-@export var palmquest : bool = true
+@export var palmquest : bool = false
 @export var moved : bool = false
 @export var playing : bool = false
+@export var testing : bool = false
 var sprint_multiplier : float  = 1.5
 
 func _ready() -> void:
