@@ -22,7 +22,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion and captured == true:
 		rotation_degrees.y -= event.relative.x * sensitivity
 		%camera.rotation_degrees.x -= event.relative.y * sensitivity
-		%camera.rotation_degrees.x = clamp(%camera.rotation_degrees.x, -90, 90)
+		%camera.rotation_degrees.x = clamp(%camera.rotation_degrees.x, -120, 120)
 		
 	if event.is_action_pressed("esc"):
 		if captured == true:
@@ -62,8 +62,9 @@ func _physics_process(delta: float) -> void:
 		velocity.z = clamp(velocity.z, -speed, speed)
 		velocity.x = move_toward(velocity.x, local_movement.x*speed, acceleration*delta)
 		velocity.z = move_toward(velocity.z, local_movement.z*speed, acceleration*delta)
-		velocity.y -= gravity * delta
-		
+		#velocity.y -= gravity * delta
+		if Input.is_action_just_pressed("Interact"):
+			position.y += 1
 		if Input.is_action_pressed("Jump") and is_on_floor():
 			velocity.y = jumpheight
 			moved = true

@@ -84,6 +84,7 @@ scale = Vector2(0.22291675, 0.22291677)
 texture = ExtResource("2_pjt0s")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1174055869]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5

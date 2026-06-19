@@ -137,6 +137,7 @@ transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, 98.154, -21.72, 0.077)
 
 [node name="inviswall" type="StaticBody3D" parent="." unique_id=873386495]
 transform = Transform3D(0.29999995, 0, 0, 0, 0.29999995, 0, 0, 0, 0.29999995, 56.11835, 0.4788686, -8.8550415)
+visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="inviswall" unique_id=1419242956]
 transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, 163.53348, 31.214622, 24.381222)
@@ -225,6 +226,7 @@ texture = ExtResource("11_cfh6e")
 
 [node name="Objectives" type="RichTextLabel" parent="." unique_id=1665354448]
 unique_name_in_owner = true
+visible = false
 offset_left = 8.0
 offset_top = 108.0
 offset_right = 237.0
